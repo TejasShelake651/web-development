@@ -1,42 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Image Tag and its Properties</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Media Showcase | Experiment 05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --bg: #0c0a09;
+            --card-bg: #1c1917;
+            --text: #fafaf9;
+            --text-muted: #a8a29e;
+            --border: #292524;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            transition: transform 0.3s;
+        }
+
+        .image-card:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
+        }
+
+        .img-container {
+            flex: 1;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transition: all 0.5s;
+        }
+
+        .image-card:hover img {
+            transform: rotate(2deg);
+        }
+
+        .img-details {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .specs {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .image-card { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
-    <h1 style="text-align:center;">Favourite Cartoons</h1>
+    <div class="header">
+        <h1>Favorite Characters</h1>
+        <p>A showcase of image tag properties including scaling, alternative text, and border attributes.</p>
+    </div>
 
-    
-    <center>
-        <h2>Doraemon</h2>
-        <img 
-            src="https://www.nicepng.com/png/detail/68-685358_doraemon-doraemon-cartoon-cartoons-japan-anime-doraemon-png.png" 
-            alt="Doraemon Cartoon" 
-            width="250" 
-            height="250" 
-            title="Doraemon - The blue robotic cat" 
-            border="2"
-        >
-        <p><strong>Doraemon:</strong> A blue robotic cat from the 22nd century who helps Nobita with magical gadgets.</p>
-    </center>
+    <div class="gallery">
+        <!-- Doraemon -->
+        <div class="image-card">
+            <div class="img-container">
+                <img 
+                    src="https://www.nicepng.com/png/detail/68-685358_doraemon-doraemon-cartoon-cartoons-japan-anime-doraemon-png.png" 
+                    alt="Doraemon Cartoon" 
+                    title="Doraemon - The blue robotic cat"
+                >
+            </div>
+            <div class="img-details">
+                <span class="tag">Anime Icon</span>
+                <h2>Doraemon</h2>
+                <p>A blue robotic cat from the 22nd century who travels back in time to help Nobita with magical gadgets from his 4D pocket.</p>
+                <div class="specs">
+                    <div class="spec-item"><i data-lucide="maximize" size="14"></i> 250x250</div>
+                    <div class="spec-item"><i data-lucide="type" size="14"></i> Alt text</div>
+                    <div class="spec-item"><i data-lucide="info" size="14"></i> Title tag</div>
+                </div>
+            </div>
+        </div>
 
-    <br>
+        <!-- Pikachu -->
+        <div class="image-card">
+            <div class="img-container">
+                <img 
+                    src="https://www.transparentpng.com/thumb/pokemon/GOxsmQ-pikachu-pokemon-transparent-background.png" 
+                    alt="Pikachu Pokemon" 
+                    title="Pikachu - The Electric Pokémon"
+                >
+            </div>
+            <div class="img-details">
+                <span class="tag">Electric Type</span>
+                <h2>Pikachu</h2>
+                <p>The iconic mascot of the Pokémon franchise, known for its lightning bolt tail and powerful electric attacks.</p>
+                <div class="specs">
+                    <div class="spec-item"><i data-lucide="maximize" size="14"></i> 250x250</div>
+                    <div class="spec-item"><i data-lucide="type" size="14"></i> Alt text</div>
+                    <div class="spec-item"><i data-lucide="info" size="14"></i> Title tag</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <center>
-        <h2>Pikachu</h2>
-        <img 
-            src="https://www.transparentpng.com/thumb/pokemon/GOxsmQ-pikachu-pokemon-transparent-background.png" 
-            alt="Pikachu Pokemon" 
-            width="250" 
-            height="250" 
-            title="Pikachu - The Electric Pokémon" 
-            border="2"
-        >
-        <p><strong>Pikachu:</strong> The iconic yellow electric-type Pokémon with a lightning bolt tail.</p>
-    </center>
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
-
-

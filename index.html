@@ -1,241 +1,620 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Lab</title>
+    <title>Web Development Portfolio | Tejas Shelake</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Web Development Lab Portfolio of Tejas Shelake. Exploring modern UI/UX, HTML5, CSS3, and XML technologies.">
+    <meta name="author" content="Tejas Shelake">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text: #f8fafc;
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        header {
-            background: rgba(15, 23, 42, 0.8);
+        /* Animated Background */
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            filter: blur(100px);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: move 20s infinite alternate;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -50px;
+            left: -50px;
+            animation-duration: 25s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 30s;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 100px) scale(1.1); }
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 60px 20px;
-            text-align: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        header {
+            padding: 100px 5% 60px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 100px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 800;
-            margin: 0;
-            background: linear-gradient(to right, #818cf8, #c084fc);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        header h1 span {
+            display: block;
+            background: linear-gradient(to right, #fff, var(--text-muted));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.025em;
         }
 
         header p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 10px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+        /* Profile Card */
+        .profile-section {
+            padding: 0 5%;
+            margin-bottom: 80px;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .profile-info h2 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .profile-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Grid Section */
+        .experiments-section {
+            padding: 0 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
         }
 
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
-            padding: 30px;
-            border-radius: 20px;
             border: 1px solid var(--glass-border);
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            gap: 20px;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .card::before {
+        .card::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, #6366f1, #a855f7);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent);
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .card:hover::before {
+        .card:hover::after {
             opacity: 1;
         }
 
-        .card h3 {
-            margin: 0 0 20px 0;
-            font-size: 1.25rem;
-            font-weight: 600;
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
             color: #fff;
         }
 
-        .card a {
-            text-decoration: none;
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: background 0.2s;
-            margin-top: auto;
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .card a:hover {
-            background: var(--primary-hover);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        .card-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .btn-view {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .exp-tag {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 5%;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .profile-meta {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            header h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Web Development Lab Experiments</h1>
-    <p>Click any experiment to view the output</p>
-</header>
-
-<div class="container">
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Experiment 2</h3>
-            <a href="Experiment-02/staticWebPage.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 3</h3>
-            <a href="Experiment-03/textFormatting.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 4 - Ordered List</h3>
-            <a href="Experiment-04/ordered.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 4 - Unordered List</h3>
-            <a href="Experiment-04/unordered.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 4 - Nested List</h3>
-            <a href="Experiment-04/nested.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 5</h3>
-            <a href="Experiment-05/index.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 6 - Main</h3>
-            <a href="Experiment-06/index.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 6 - Image 1</h3>
-            <a href="Experiment-06/image1.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 6 - Image 2</h3>
-            <a href="Experiment-06/image2.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 6 - Video</h3>
-            <a href="Experiment-06/video.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 7</h3>
-            <a href="Experiment-07/index.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 8 - Table</h3>
-            <a href="Experiment-08/table.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 8 - Timetable</h3>
-            <a href="Experiment-08/timetable.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 9</h3>
-            <a href="Experiment-09/basic.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 10</h3>
-            <a href="Experiment-10/basic.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 11 - XML</h3>
-            <a href="Experiment-11/Books.xml" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 12 - CD Catalog</h3>
-            <a href="Experiment-12/cdcatlog_output.html" target="_blank">Open Output</a>
-        </div>
-
-        <div class="card">
-            <h3>Experiment 13 - Students</h3>
-            <a href="Experiment-13/students_output.htm" target="_blank">Open Output</a>
-        </div>
-
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
-</div>
+    <nav>
+        <div class="logo">
+            <i data-lucide="layers"></i>
+            <span>DEV.LAB</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#experiments">Experiments</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
+    <header id="home">
+        <div class="badge">Session 2025-26</div>
+        <h1>
+            <span>The Future of Web</span>
+            Development Lab
+        </h1>
+        <p>A comprehensive collection of experiments showcasing modern web technologies, semantic structures, and data visualization.</p>
+    </header>
+
+    <section class="profile-section">
+        <div class="profile-card">
+            <div class="profile-img">TS</div>
+            <div class="profile-info">
+                <h2>Tejas Shelake</h2>
+                <div class="profile-meta">
+                    <span><i data-lucide="user" size="16"></i> Roll No: 27</span>
+                    <span><i data-lucide="mail" size="16"></i> tsheake991@gmail.com</span>
+                    <span><i data-lucide="code" size="16"></i> Web Development Lab</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experiments-section" id="experiments">
+        <div class="section-header">
+            <div>
+                <h2>Lab Work</h2>
+                <p style="color: var(--text-muted)">Curated list of 13+ experiments</p>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Exp 02 -->
+            <a href="Experiment-02/staticWebPage.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="file-code"></i></div>
+                <div class="card-content">
+                    <h3>Static Web Page</h3>
+                    <p>Foundation of web architecture using basic semantic HTML elements and simple layouts.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 02</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 03 -->
+            <a href="Experiment-03/textFormatting.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="type"></i></div>
+                <div class="card-content">
+                    <h3>Text Formatting</h3>
+                    <p>Exploring various text manipulation tags including bold, italic, underline, and semantic emphasis.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 03</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 04 -->
+            <div class="card" style="cursor: default;">
+                <div class="card-icon" style="color: var(--secondary)"><i data-lucide="list"></i></div>
+                <div class="card-content">
+                    <h3>HTML Lists</h3>
+                    <p>Comprehensive study of Ordered, Unordered, and complex Nested list structures.</p>
+                    <div style="margin-top: 15px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="Experiment-04/ordered.html" target="_blank" class="exp-tag" style="text-decoration: none; background: rgba(139, 92, 246, 0.2); color: #fff;">Ordered</a>
+                        <a href="Experiment-04/unordered.html" target="_blank" class="exp-tag" style="text-decoration: none; background: rgba(139, 92, 246, 0.2); color: #fff;">Unordered</a>
+                        <a href="Experiment-04/nested.html" target="_blank" class="exp-tag" style="text-decoration: none; background: rgba(139, 92, 246, 0.2); color: #fff;">Nested</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 04</span>
+                </div>
+            </div>
+
+            <!-- Exp 05 -->
+            <a href="Experiment-05/index.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="image"></i></div>
+                <div class="card-content">
+                    <h3>Image Properties</h3>
+                    <p>Implementing images with various attributes like width, height, alt text, and title tags.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 05</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 06 -->
+            <a href="Experiment-06/index.html" target="_blank" class="card">
+                <div class="card-icon" style="color: var(--accent)"><i data-lucide="play-circle"></i></div>
+                <div class="card-content">
+                    <h3>Multimedia Integration</h3>
+                    <p>Embedding video and audio files into web pages with custom controls and sources.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 06</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 07 -->
+            <a href="Experiment-07/index.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="layout"></i></div>
+                <div class="card-content">
+                    <h3>Multi-page Navigation</h3>
+                    <p>Creating interconnected web pages with effective navigation menus and linking strategies.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 07</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 08 -->
+            <a href="Experiment-08/timetable.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="table"></i></div>
+                <div class="card-content">
+                    <h3>Table Management</h3>
+                    <p>Designing complex data tables like college timetables with rowspan and colspan attributes.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 08</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 09 -->
+            <a href="Experiment-09/basic.html" target="_blank" class="card">
+                <div class="card-icon" style="color: #10b981"><i data-lucide="check-square"></i></div>
+                <div class="card-content">
+                    <h3>Registration Portal</h3>
+                    <p>Developing interactive employee registration forms with advanced input validation.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 09</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 10 -->
+            <a href="Experiment-10/basic.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="file-input"></i></div>
+                <div class="card-content">
+                    <h3>Form Controls</h3>
+                    <p>Experimenting with modern HTML5 form controls like date pickers, range, and color inputs.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 10</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 11 -->
+            <a href="Experiment-11/Books.xml" target="_blank" class="card">
+                <div class="card-icon" style="color: #fbbf24"><i data-lucide="database"></i></div>
+                <div class="card-content">
+                    <h3>XML Data Storage</h3>
+                    <p>Structuring hierarchical data using XML for a robust digital book catalog system.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 11</span>
+                    <span class="btn-view">View XML <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 12 -->
+            <a href="Experiment-12/cdcatlog_output.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="disc"></i></div>
+                <div class="card-content">
+                    <h3>XSLT Transformation</h3>
+                    <p>Transforming XML data into styled HTML tables using XSLT for a CD Catalog.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 12</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+
+            <!-- Exp 13 -->
+            <a href="Experiment-13/students_output.html" target="_blank" class="card">
+                <div class="card-icon"><i data-lucide="users"></i></div>
+                <div class="card-content">
+                    <h3>Student Database</h3>
+                    <p>Advanced XSLT rendering of student information systems with conditional styling.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="exp-tag">EXP 13</span>
+                    <span class="btn-view">View Output <i data-lucide="arrow-right" size="14"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Tejas Shelake | Web Development Lab | All Rights Reserved</p>
+    </header>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
-

@@ -1,67 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Experiment 02 - Static Web Page</title>
     <meta charset="UTF-8">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Static Interface | Experiment 02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #818cf8;
+            --bg: #030712;
+            --surface: rgba(17, 24, 39, 0.7);
+            --text: #f3f4f6;
+            --text-dim: #9ca3af;
+            --accent: #10b981;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Decorative Elements */
+        .glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .nav {
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero {
+            padding: 120px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-content { flex: 1; }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            color: var(--secondary);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -3px;
+        }
+
+        h1 span {
+            display: block;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .btn-group { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-grid {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 60px; }
+            .hero p { margin: 0 auto 40px; }
+            .btn-group { justify-content: center; }
+            .feature-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
 <body>
 
-    <h1>Static Web Page</h1>
-    <hr>
+    <div class="glow" style="top: -100px; right: -100px;"></div>
+    <div class="glow" style="bottom: -100px; left: -100px; background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);"></div>
 
-    <h2>Web Development Lab</h2>
-    <p>
-        This is a simple static web page created using only HTML.
-        It does not contain CSS or JavaScript.
-    </p>
+    <nav class="nav">
+        <div class="logo">
+            <i data-lucide="zap" fill="currentColor"></i>
+            STATIC.OS
+        </div>
+        <div style="display: flex; gap: 40px; color: var(--text-dim); font-weight: 500;">
+            <span>Features</span>
+            <span>Architecture</span>
+            <span>Documentation</span>
+        </div>
+    </nav>
 
-    <h3>About HTML</h3>
-    <p>
-        HTML stands for HyperText Markup Language.
-        It is used to structure content on the web.
-    </p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">Experiment 02: Semantic HTML</div>
+                <h1>
+                    <span>Building the Future</span>
+                    With Static Web.
+                </h1>
+                <p>A demonstration of clean, semantic HTML5 structure combined with high-performance modern CSS aesthetics.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Get Started <i data-lucide="arrow-right"></i></a>
+                    <a href="#" class="btn btn-secondary">View Source</a>
+                </div>
+            </div>
+            <div style="flex: 1; position: relative;">
+                <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="layout" size="120" style="opacity: 0.1;"></i>
+                    <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 20px;"></div>
+                </div>
+            </div>
+        </section>
 
-    <h3>Features of HTML</h3>
-    <ul>
-        <li>Easy to learn</li>
-        <li>Platform independent</li>
-        <li>Supports text, images, and links</li>
-        <li>Used to create static web pages</li>
-    </ul>
+        <section class="feature-grid">
+            <div class="feature-card">
+                <div class="icon-box"><i data-lucide="box"></i></div>
+                <h3>Semantic Core</h3>
+                <p>Utilizing header, section, and main tags to ensure maximum accessibility and SEO performance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i data-lucide="shield"></i></div>
+                <h3>Modern CSS</h3>
+                <p>Pure Vanilla CSS implementation with custom properties and advanced flexbox layouts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i data-lucide="smartphone"></i></div>
+                <h3>Fully Responsive</h3>
+                <p>Adaptive design system that scales seamlessly from mobile screens to ultra-wide displays.</p>
+            </div>
+        </section>
+    </main>
 
-    <h3>Sample Table</h3>
-    <table border="1">
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>&lt;h1&gt;</td>
-            <td>Heading tag</td>
-        </tr>
-        <tr>
-            <td>&lt;p&gt;</td>
-            <td>Paragraph tag</td>
-        </tr>
-        <tr>
-            <td>&lt;a&gt;</td>
-            <td>Anchor (link) tag</td>
-        </tr>
-    </table>
+    <footer style="padding: 60px 10%; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+        <p>&copy; 2025 Static Web Experiment | Built by Tejas Shelake</p>
+    </footer>
 
-    <h3>Useful Links</h3>
-    <p>
-        <a href="https://www.w3schools.com">W3Schools</a><br>
-        <a href="https://developer.mozilla.org">MDN Web Docs</a>
-    </p>
-
-    
-
-    <hr>
-
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
-
-
