@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Shelake - Professional Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --sidebar-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 1100px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--sidebar-bg);
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .sidebar h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            color: #94a3b8;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .contact-info, .education {
+            margin-bottom: 50px;
+        }
+
+        .contact-info p, .education p {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 60px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .overview-text {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .skills-grid, .list-styled {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            list-style: none;
+        }
+
+        .skill-item, .list-item {
+            background: var(--light);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--secondary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-item::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="contact-info">
+                <h4>Contact</h4>
+                <p>📞 +91 9767797147</p>
+                <p>📧 tsheake991@gmai.com</p>
+                <p>📍 Kolhapur, Maharashtra</p>
+            </div>
+
+            <div class="education">
+                <h4>Education</h4>
+                <p><strong>B.Tech:</strong> D Y Patil College of Engineering & Technology, Kolhapur</p>
+                <p><strong>HSC:</strong> Sadhana Junior College, Gadhinglaj</p>
+                <p><strong>SSC:</strong> Sadhana High School, Gadhinglaj</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>TEJAS<br>SHELAKE</h1>
+            </div>
+
+            <div class="section">
+                <h4 class="section-title">Professional Overview</h4>
+                <p class="overview-text">
+                    I am a motivated Computer Science and Engineering student with a strong foundation in
+                    programming, data structures, and web development. Skilled in building practical projects
+                    using HTML, CSS, JavaScript, and C/C++, with a growing interest in data analysis and
+                    problem solving. Known for disciplined work ethic and clear thinking.
+                </p>
+            </div>
+
+            <div class="section">
+                <h4 class="section-title">Technical Skills</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">C / C++ Programming</div>
+                    <div class="skill-item">Python Development</div>
+                    <div class="skill-item">Java Core</div>
+                    <div class="skill-item">Frontend (HTML, CSS, JS)</div>
+                    <div class="skill-item">Data Structures</div>
+                    <div class="skill-item">UI/UX Principles</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h4 class="section-title">Qualities</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">Strategic Analysis</div>
+                    <div class="skill-item">Team Leadership</div>
+                    <div class="skill-item">Effective Problem Solving</div>
+                    <div class="skill-item">Disciplined Workflow</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h4 class="section-title">Hobbies</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">Watching Movies 🎥</div>
+                    <div class="skill-item">Listening Music 🎵</div>
+                    <div class="skill-item">Travelling ✈️</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

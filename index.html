@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Lab</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 60px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card a {
+            text-decoration: none;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .card a:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Web Development Lab Experiments</h1>
+    <p>Click any experiment to view the output</p>
+</header>
+
+<div class="container">
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Experiment 2</h3>
+            <a href="Experiment-02/staticWebPage.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 3</h3>
+            <a href="Experiment-03/textFormatting.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 4 - Ordered List</h3>
+            <a href="Experiment-04/ordered.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 4 - Unordered List</h3>
+            <a href="Experiment-04/unordered.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 4 - Nested List</h3>
+            <a href="Experiment-04/nested.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 5</h3>
+            <a href="Experiment-05/index.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 6 - Main</h3>
+            <a href="Experiment-06/index.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 6 - Image 1</h3>
+            <a href="Experiment-06/image1.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 6 - Image 2</h3>
+            <a href="Experiment-06/image2.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 6 - Video</h3>
+            <a href="Experiment-06/video.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 7</h3>
+            <a href="Experiment-07/index.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 8 - Table</h3>
+            <a href="Experiment-08/table.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 8 - Timetable</h3>
+            <a href="Experiment-08/timetable.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 9</h3>
+            <a href="Experiment-09/basic.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 10</h3>
+            <a href="Experiment-10/basic.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 11 - XML</h3>
+            <a href="Experiment-11/Books.xml" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 12 - CD Catalog</h3>
+            <a href="Experiment-12/cdcatlog_output.html" target="_blank">Open Output</a>
+        </div>
+
+        <div class="card">
+            <h3>Experiment 13 - Students</h3>
+            <a href="Experiment-13/students_output.htm" target="_blank">Open Output</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
