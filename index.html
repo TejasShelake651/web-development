@@ -138,104 +138,251 @@
         }
 
         /* Hero Section */
-        header {
-            padding: 100px 5% 60px;
-            text-align: center;
-            max-width: 1000px;
+        .hero {
+            padding: 80px 5% 100px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
             background: rgba(139, 92, 246, 0.1);
             border: 1px solid rgba(139, 92, 246, 0.2);
             border-radius: 100px;
             color: var(--primary-light);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        header h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             margin-bottom: 20px;
             letter-spacing: -2px;
             line-height: 1.1;
         }
 
-        header h1 span {
+        .gradient-text {
             display: block;
-            background: linear-gradient(to right, #fff, var(--text-muted));
+            background: linear-gradient(135deg, #c084fc, #f472b6, #22d3ee);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
         }
 
-        header p {
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-desc {
             color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            max-width: 480px;
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
 
-        /* Profile Card */
-        .profile-section {
-            padding: 0 5%;
-            margin-bottom: 80px;
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        .profile-card {
+        .btn-primary, .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        /* Hero Profile Card */
+        .hero-profile {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            transition: transform 0.3s, border-color 0.3s;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s, border-color 0.4s;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .profile-card:hover {
-            transform: translateY(-5px);
+        .hero-profile:hover {
+            transform: translateY(-8px);
             border-color: rgba(139, 92, 246, 0.4);
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 25px;
+        .profile-glow {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: white;
+            margin: 0 auto 20px;
             box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-info h2 {
-            font-size: 2rem;
-            margin-bottom: 5px;
+        .hero-profile h3 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-meta {
-            display: flex;
-            gap: 20px;
+        .profile-role {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-meta span {
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
         }
 
         /* Grid Section */
@@ -250,6 +397,69 @@
             justify-content: space-between;
             align-items: flex-end;
             margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 14px 18px 14px 48px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        .search-bar::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-bar:focus {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1), var(--neon-shadow);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .search-bar:focus + i,
+        .search-wrapper:focus-within i {
+            color: var(--primary-light);
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .no-results.show {
+            display: block;
         }
 
         .section-header h2 {
@@ -369,17 +579,22 @@
         }
 
         @media (max-width: 768px) {
-            .profile-card {
-                flex-direction: column;
+            .hero {
+                grid-template-columns: 1fr;
                 text-align: center;
-                gap: 20px;
+                padding: 60px 5% 80px;
             }
-            .profile-meta {
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
             }
-            header h1 { font-size: 2.8rem; }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-profile {
+                max-width: 360px;
+                margin: 0 auto;
+            }
             .nav-links { display: none; }
         }
     </style>
@@ -404,25 +619,41 @@
         </div>
     </nav>
 
-    <header id="home">
-        <div class="badge">Session 2025-26</div>
-        <h1>
-            <span>The Future of Web</span>
-            Development Lab
-        </h1>
-        <p>A comprehensive collection of experiments showcasing modern web technologies, semantic structures, and data visualization.</p>
-    </header>
-
-    <section class="profile-section">
-        <div class="profile-card">
-            <div class="profile-img">TS</div>
-            <div class="profile-info">
-                <h2>Tejas Shelake</h2>
-                <div class="profile-meta">
-                    <span><i data-lucide="user" size="16"></i> Roll No: 27</span>
-                    <span><i data-lucide="mail" size="16"></i> tsheake991@gmail.com</span>
-                    <span><i data-lucide="code" size="16"></i> Web Development Lab</span>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Session 2025-26
+            </div>
+            <h1>
+                <span class="gradient-text">Web Development</span>
+                <span>Lab Portfolio</span>
+            </h1>
+            <p class="hero-desc">A curated collection of 13+ experiments exploring modern UI/UX, semantic HTML5, CSS3, XML & XSLT technologies.</p>
+            <div class="hero-actions">
+                <a href="#experiments" class="btn-primary">Explore Work <i data-lucide="arrow-down" size="16"></i></a>
+                <a href="mailto:tsheake991@gmail.com" class="btn-ghost">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-profile">
+            <div class="profile-glow"></div>
+            <div class="profile-avatar">TS</div>
+            <h3>Tejas Shelake</h3>
+            <p class="profile-role">Web Development Lab</p>
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-num">13+</span>
+                    <span class="stat-label">Experiments</span>
                 </div>
+                <div class="stat">
+                    <span class="stat-num">27</span>
+                    <span class="stat-label">Roll No</span>
+                </div>
+            </div>
+            <div class="profile-socials">
+                <a href="mailto:tsheake991@gmail.com" class="social-btn" title="Email"><i data-lucide="mail" size="18"></i></a>
+                <a href="#" class="social-btn" title="GitHub"><i data-lucide="github" size="18"></i></a>
+                <a href="#" class="social-btn" title="LinkedIn"><i data-lucide="linkedin" size="18"></i></a>
             </div>
         </div>
     </section>
@@ -433,6 +664,15 @@
                 <h2>Lab Work</h2>
                 <p style="color: var(--text-muted)">Curated list of 13+ experiments</p>
             </div>
+            <div class="search-wrapper">
+                <input type="text" class="search-bar" id="searchBar" placeholder="Search experiments...">
+                <i data-lucide="search" size="18"></i>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <i data-lucide="search-x" size="48" style="margin-bottom: 16px; opacity: 0.5;"></i>
+            <p>No experiments match your search.</p>
         </div>
 
         <div class="grid">
@@ -600,7 +840,7 @@
 
     <footer>
         <p>&copy; 2025 Tejas Shelake | Web Development Lab | All Rights Reserved</p>
-    </header>
+    </footer>
 
     <script>
         // Initialize Lucide Icons
@@ -614,6 +854,31 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Search filtering
+        const searchBar = document.getElementById('searchBar');
+        const cards = document.querySelectorAll('.grid .card');
+        const noResults = document.getElementById('noResults');
+
+        searchBar.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+                const tag = card.querySelector('.exp-tag')?.textContent.toLowerCase() || '';
+
+                if (title.includes(query) || desc.includes(query) || tag.includes(query)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            noResults.classList.toggle('show', visibleCount === 0);
         });
     </script>
 </body>
